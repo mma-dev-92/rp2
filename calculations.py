@@ -106,6 +106,11 @@ def calculate_m(params: Parameters, p0_gen: P0, p_nm_gen: Pnm) -> int:
         p_nm = p_nm_gen[m + 1]
         m += 1
 
+    if m == 0:
+        logging.warning(
+            f"computed value m={m}, please verify input parameters (probably 'p' value compared to 'n' value is is to "
+            f"small) [this is just warning, program will not crush, but results might be strange]")
+
     return m
 
 

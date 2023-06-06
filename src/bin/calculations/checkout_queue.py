@@ -1,12 +1,13 @@
-import numpy as np
-
 from src.bin.calculations.utils import calculate_rho, partial_exp
 from src.bin.preprocessing import CheckoutQueueParams
 
 
 def _free_p0_therm(rho: float, n: int) -> float:
     """ Term in p0 formula, that is outside the sum over k """
-    return rho * (n*rho) ** n / np.math.factorial(n) / (1 - rho)
+    result = 1
+    for k in range(1, n + 1):
+        result *= n * rho / k
+    return result * rho / (1 - rho)
 
 
 def p0_(rho: float, n: int) -> float:

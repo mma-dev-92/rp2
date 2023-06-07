@@ -9,7 +9,4 @@ def partial_exp(x: float, n: int) -> float:
 def calculate_rho(a: float, t_0: float, n: int) -> float:
     """ Value of rho for given t0, n and a """
     result = (a * t_0) / n
-    if result >= 1.0:
-        raise ValueError(
-            f"rho cannot be greater or equal to 1.0, verify input parameters!")
     return result

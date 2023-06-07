@@ -26,6 +26,7 @@ def calculate_n(a: float, t_0: float, Q: float, L: int) -> int:
     rho = calculate_rho(a, t_0, n)
     P_value = P_(rho, n, L)
     while P_value < Q:
+        rho = calculate_rho(a, t_0, n + 1)
         P_value = P_(rho, n + 1, L)
         n = n + 1
     return n

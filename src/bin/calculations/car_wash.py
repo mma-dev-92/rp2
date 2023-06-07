@@ -32,11 +32,11 @@ def calculate_m(a: float, t_0: float, n: int, P: float) -> int:
 
 
 def calculate_w1(a: float, t_0: float, n: int, m: int) -> float:
-    """ For given a, t_0, n and computed minimal value of m calculate expected await time w1 """
+    """ minimal value of m calculate expected await time w1 for given t_0, n, m and a """
     rho = calculate_rho(a, t_0, n)
     p0_value = p0_(rho, n, m)
-    factor = p0_value * n ** n / np.math.factorial(n) / (1 - p_nm_(rho, n, m))
-    return factor * sum([(rho ** k) / k for k in range(n, n + m)])
+    factor = t_0 * p0_value * n ** n / np.math.factorial(n) / (1 - p_nm_(rho, n, m)) / n
+    return factor * sum([(rho ** k) * k for k in range(n, n + m)])
 
 
 def car_wash_calculations(params: CarWashParams):
